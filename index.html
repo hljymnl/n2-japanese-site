@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N2 冲刺营｜日语备考互动学习</title>
+  <meta name="description" content="N2 日语备考互动学习网站——每日打卡、单词卡、文法、听力、阅读、模拟测试">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🎌</span>
+      <div class="brand-text">
+        <h1>N2 冲刺营</h1>
+        <div class="countdown" id="countdown">距考试 -- 天</div>
+      </div>
+    </div>
+    <div class="top-right">
+      <div class="streak" id="streakBadge" title="连续打卡天数">🔥 <span id="streakNum">0</span></div>
+      <button id="menuBtn" class="icon-btn" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <!-- 桌面侧边导航 -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-list">
+      <a href="#dashboard" class="nav-item active" data-view="dashboard"><span>📊</span> 今日任务</a>
+      <a href="#vocab" class="nav-item" data-view="vocab"><span>🃏</span> 单词卡</a>
+      <a href="#grammar" class="nav-item" data-view="grammar"><span>📖</span> 文法精讲</a>
+      <a href="#listening" class="nav-item" data-view="listening"><span>🎧</span> 听力训练</a>
+      <a href="#reading" class="nav-item" data-view="reading"><span>📰</span> 阅读理解</a>
+      <a href="#quiz" class="nav-item" data-view="quiz"><span>✍️</span> 模拟测试</a>
+      <a href="#mistakes" class="nav-item" data-view="mistakes"><span>📌</span> 错题本</a>
+      <a href="#stats" class="nav-item" data-view="stats"><span>🏆</span> 我的成就</a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="level-progress">
+        <div class="level-label">本周目标</div>
+        <div class="progress-bar"><div class="progress-fill" id="weekProgress"></div></div>
+        <div class="level-num" id="weekProgressText">0%</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 移动端底部导航 -->
+  <nav class="bottom-nav" id="bottomNav">
+    <a href="#dashboard" class="bn-item active" data-view="dashboard"><span>📊</span>今日</a>
+    <a href="#vocab" class="bn-item" data-view="vocab"><span>🃏</span>单词</a>
+    <a href="#grammar" class="bn-item" data-view="grammar"><span>📖</span>文法</a>
+    <a href="#quiz" class="bn-item" data-view="quiz"><span>✍️</span>测试</a>
+    <a href="#stats" class="bn-item" data-view="stats"><span>🏆</span>成就</a>
+  </nav>
+
+  <main class="content" id="content">
+
+    <!-- ============ 视图:今日任务 ============ -->
+    <section class="view" id="view-dashboard">
+      <div class="hero">
+        <h2>こんにちは！頑張ろう 💪</h2>
+        <p class="hero-sub">距离 N2 考试还有 <strong id="heroCountdown"></strong> 天。今天也要元气满满地学习哦！</p>
+        <div class="date-line" id="todayDate"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">📋 今日任务清单</h3>
+        <div class="daily-checklist" id="dailyChecklist"></div>
+        <div class="check-day-actions">
+          <button class="btn btn-primary" id="markAllBtn">✅ 全部完成</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">🔥 我的学习状态</h3>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="stat-num" id="statStreak">0</div><div class="stat-label">连续打卡（天）</div></div>
+          <div class="stat-box"><div class="stat-num" id="statTotalChecks">0</div><div class="stat-label">总打卡（天）</div></div>
+          <div class="stat-box"><div class="stat-num" id="statVocab">0</div><div class="stat-label">已学单词</div></div>
+          <div class="stat-box"><div class="stat-num" id="statMistakes">0</div><div class="stat-label">错题收藏</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">🗓 本周学习日历</h3>
+        <div class="week-calendar" id="weekCalendar"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">🎯 每日一句话</h3>
+        <div class="daily-quote" id="dailyQuote"></div>
+      </div>
+    </section>
+
+    <!-- ============ 视图:单词卡 ============ -->
+    <section class="view" id="view-vocab" style="display:none">
+      <div class="view-head">
+        <h2>🃏 N2 核心单词卡</h2>
+        <div class="sub">共 <span id="vocabTotal"></span> 词 · 点击卡片翻面 · 自动朗读读音</div>
+      </div>
+
+      <div class="flashcard-controls">
+        <button class="btn" id="vocabPrev">← 上一个</button>
+        <div class="flashcard" id="flashcard">
+          <div class="card-inner" id="cardInner">
+            <div class="card-face card-front">
+              <div class="card-kana" id="fcKana"></div>
+              <div class="card-kanji" id="fcKanji"></div>
+              <div class="card-hint">点击查看释义</div>
+            </div>
+            <div class="card-face card-back">
+              <div class="card-kanji" id="fcKanjiBack"></div>
+              <div class="card-kana" id="fcKanaBack"></div>
+              <div class="card-type" id="fcType"></div>
+              <div class="card-meaning" id="fcMeaning"></div>
+              <div class="card-example">例: <span id="fcExample"></span></div>
+            </div>
+          </div>
+        </div>
+        <button class="btn" id="vocabNext">下一个 →</button>
+      </div>
+
+      <div class="card-progress">已学 <span id="vocabSeen">0</span> / <span id="vocabTotal2"></span></div>
+
+      <div class="card-actions">
+        <button class="btn btn-green" id="vocabKnown">😊 已经会了</button>
+        <button class="btn btn-amber" id="vocabAgain">🤔 不太熟</button>
+        <button class="btn btn-outline" id="vocabSpeak">🔊 朗读</button>
+        <button class="btn btn-red" id="vocabWrong">📌 加入错题本</button>
+      </div>
+
+      <div class="filters">
+        <label><input type="checkbox" id="filterUnseen" > 只看未学</label>
+        <label><input type="checkbox" id="filterWrong"> 只看错题</label>
+      </div>
+    </section>
+
+    <!-- ============ 视图:文法 ============ -->
+    <section class="view" id="view-grammar" style="display:none">
+      <div class="view-head">
+        <h2>📖 N2 文法精讲</h2>
+        <div class="sub">按单元学习，每个文法点配讲解与例句</div>
+      </div>
+      <div class="unit-tabs" id="unitTabs"></div>
+      <div class="grammar-list" id="grammarList"></div>
+    </section>
+
+    <!-- ============ 视图:听力 ============ -->
+    <section class="view" id="view-listening" style="display:none">
+      <div class="view-head">
+        <h2>🎧 听力训练</h2>
+        <div class="sub">点击播放按钮朗读日语，选出你听到的内容</div>
+      </div>
+      <div class="listening-box" id="listeningBox">
+        <button class="btn btn-primary btn-big" id="listenPlay">🔊 播放句子</button>
+        <div class="listen-options" id="listenOptions"></div>
+        <div class="listen-feedback" id="listenFeedback"></div>
+        <button class="btn btn-outline" id="listenNext">下一题 →</button>
+      </div>
+      <div class="card tips-card">
+        <h3 class="card-title">💡 听力提分贴士</h3>
+        <ul class="tips">
+          <li>抓住<strong>关键词</strong>和<strong>句尾</strong>（ね、よ、けど…决定语气）</li>
+          <li>N2 常考:原因·理由、时间·顺序、人物关系、地点</li>
+          <li>先读选项再听,预判会问什么</li>
+          <li>选项一般是"动作/状态/结论",注意肯定与否定</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 视图:阅读 ============ -->
+    <section class="view" id="view-reading" style="display:none">
+      <div class="view-head">
+        <h2>📰 阅读理解</h2>
+        <div class="sub">每篇短文配 2-3 道理解题</div>
+      </div>
+      <div class="reading-layout">
+        <div class="reading-text card" id="readingText"></div>
+        <div class="reading-questions card" id="readingQuestions"></div>
+      </div>
+      <div class="reading-controls">
+        <button class="btn btn-outline" id="readingPrev">← 上一篇</button>
+        <div class="reading-progress" id="readingProgress">1 / 5</div>
+        <button class="btn btn-outline" id="readingNext">下一篇 →</button>
+      </div>
+    </section>
+
+    <!-- ============ 视图:模拟测试 ============ -->
+    <section class="view" id="view-quiz" style="display:none">
+      <div class="view-head">
+        <h2>✍️ 模拟测试</h2>
+        <div class="sub">N2 综合小测 · 计时答题 · 自动判分</div>
+      </div>
+
+      <div id="quizHome" class="quiz-home">
+        <div class="card center-card">
+          <h3>准备开始？</h3>
+          <p>共 <strong id="quizCount"></strong> 题<br>涵盖 词汇·文法·阅读<br>完成后自动判分并保存错题</p>
+          <button class="btn btn-primary btn-big" id="quizStart">🚀 开始测试</button>
+        </div>
+      </div>
+
+      <div id="quizRunning" style="display:none">
+        <div class="quiz-topbar">
+          <div class="quiz-timer" id="quizTimer">⏱ 00:00</div>
+          <div class="quiz-count" id="quizCountDisplay">1 / --</div>
+        </div>
+        <div class="card quiz-card">
+          <div class="quiz-question" id="quizQuestion"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn btn-outline" id="quizPrev">← 上一题</button>
+          <button class="btn btn-primary" id="quizNext">下一题 →</button>
+          <button class="btn btn-red" id="quizSubmit">🏁 交卷</button>
+        </div>
+      </div>
+
+      <div id="quizResult" style="display:none">
+        <div class="card center-card result-card">
+          <h3>📊 测试结果</h3>
+          <div class="result-big" id="resultScore"></div>
+          <div id="resultBreakdown"></div>
+          <div class="result-msg" id="resultMsg"></div>
+          <div class="result-review" id="resultWrongList"></div>
+          <button class="btn btn-primary" id="quizRetry">🔄 再测一次</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 视图:错题本 ============ -->
+    <section class="view" id="view-mistakes" style="display:none">
+      <div class="view-head">
+        <h2>📌 错题本</h2>
+        <div class="sub">这里收藏你做错的题，反复巩固</div>
+      </div>
+      <div id="mistakeList" class="mistake-list"></div>
+    </section>
+
+    <!-- ============ 视图:成就 ============ -->
+    <section class="view" id="view-stats" style="display:none">
+      <div class="view-head">
+        <h2>🏆 我的成就</h2>
+        <div class="sub">学习打卡换勋章，坚持就是胜利！</div>
+      </div>
+      <div class="achievements" id="achievements"></div>
+      <div class="card">
+        <h3 class="card-title">📅 打卡日历</h3>
+        <div class="month-calendar" id="monthCalendar"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 提示浮层 -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/vocab.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
