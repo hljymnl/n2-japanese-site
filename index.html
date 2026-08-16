@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>N2 冲刺营｜日语备考互动学习</title>
-  <meta name="description" content="N2 日语备考互动学习网站——每日打卡、单词卡、文法、听力、阅读、模拟测试">
+  <title>N2 冲刺网｜12月N2全考点备考平台</title>
+  <meta name="description" content="N2 冲刺网——覆盖 JLPT N2 全部考点：文字・語彙、文法、読解、聴解，含单词卡、文法精讲、听力训练、阅读理解、全真模拟、错题本、16周冲刺计划。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎌</text></svg>">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- 顶部导航 -->
@@ -15,7 +16,7 @@
     <div class="brand">
       <span class="logo">🎌</span>
       <div class="brand-text">
-        <h1>N2 冲刺营</h1>
+        <h1>N2 冲刺网</h1>
         <div class="countdown" id="countdown">距考试 -- 天</div>
       </div>
     </div>
@@ -28,31 +29,36 @@
   <!-- 桌面侧边导航 -->
   <nav class="sidebar" id="sidebar">
     <div class="nav-list">
-      <a href="#dashboard" class="nav-item active" data-view="dashboard"><span>📊</span> 今日任务</a>
-      <a href="#vocab" class="nav-item" data-view="vocab"><span>🃏</span> 单词卡</a>
-      <a href="#grammar" class="nav-item" data-view="grammar"><span>📖</span> 文法精讲</a>
-      <a href="#listening" class="nav-item" data-view="listening"><span>🎧</span> 听力训练</a>
-      <a href="#reading" class="nav-item" data-view="reading"><span>📰</span> 阅读理解</a>
-      <a href="#quiz" class="nav-item" data-view="quiz"><span>✍️</span> 模拟测试</a>
-      <a href="#mistakes" class="nav-item" data-view="mistakes"><span>📌</span> 错题本</a>
-      <a href="#stats" class="nav-item" data-view="stats"><span>🏆</span> 我的成就</a>
+      <a href="#dashboard" class="nav-item active" data-view="dashboard"><span>📊</span><span class="nav-text"><span class="nav-cn">今日任务</span><span class="nav-jp">今日のタスク</span></span></a>
+      <a href="#vocab" class="nav-item" data-view="vocab"><span>🃏</span><span class="nav-text"><span class="nav-cn">单词卡</span><span class="nav-jp">単語カード</span></span></a>
+      <a href="#kanji" class="nav-item" data-view="kanji"><span>🈶</span><span class="nav-text"><span class="nav-cn">汉字学习</span><span class="nav-jp">漢字学習</span></span></a>
+      <a href="#tables" class="nav-item" data-view="tables"><span>📑</span><span class="nav-text"><span class="nav-cn">词表资料库</span><span class="nav-jp">語彙表</span></span></a>
+      <a href="#grammar" class="nav-item" data-view="grammar"><span>📖</span><span class="nav-text"><span class="nav-cn">文法精讲</span><span class="nav-jp">文法解説</span></span></a>
+      <a href="#listening" class="nav-item" data-view="listening"><span>🎧</span><span class="nav-text"><span class="nav-cn">听力训练</span><span class="nav-jp">聴解練習</span></span></a>
+      <a href="#reading" class="nav-item" data-view="reading"><span>📰</span><span class="nav-text"><span class="nav-cn">阅读理解</span><span class="nav-jp">読解練習</span></span></a>
+      <a href="#quiz" class="nav-item" data-view="quiz"><span>✍️</span><span class="nav-text"><span class="nav-cn">模拟测试</span><span class="nav-jp">模擬テスト</span></span></a>
+      <a href="#mistakes" class="nav-item" data-view="mistakes"><span>📌</span><span class="nav-text"><span class="nav-cn">错题本</span><span class="nav-jp">間違いノート</span></span></a>
+      <a href="#stats" class="nav-item" data-view="stats"><span>🏆</span><span class="nav-text"><span class="nav-cn">我的成就</span><span class="nav-jp">実績</span></span></a>
+      <a href="#exam" class="nav-item" data-view="exam"><span>📋</span><span class="nav-text"><span class="nav-cn">考试情报</span><span class="nav-jp">試験情報</span></span></a>
+      <a href="#plan" class="nav-item" data-view="plan"><span>🗓</span><span class="nav-text"><span class="nav-cn">冲刺计划</span><span class="nav-jp">学習計画</span></span></a>
     </div>
     <div class="sidebar-footer">
-      <div class="level-progress">
-        <div class="level-label">本周目标</div>
-        <div class="progress-bar"><div class="progress-fill" id="weekProgress"></div></div>
-        <div class="level-num" id="weekProgressText">0%</div>
-      </div>
+      <div class="level-label">本周目标</div>
+      <div class="progress-bar"><div class="progress-fill" id="weekProgress"></div></div>
+      <div class="level-num" id="weekProgressText">0%</div>
     </div>
   </nav>
 
   <!-- 移动端底部导航 -->
   <nav class="bottom-nav" id="bottomNav">
-    <a href="#dashboard" class="bn-item active" data-view="dashboard"><span>📊</span>今日</a>
-    <a href="#vocab" class="bn-item" data-view="vocab"><span>🃏</span>单词</a>
-    <a href="#grammar" class="bn-item" data-view="grammar"><span>📖</span>文法</a>
-    <a href="#quiz" class="bn-item" data-view="quiz"><span>✍️</span>测试</a>
-    <a href="#stats" class="bn-item" data-view="stats"><span>🏆</span>成就</a>
+    <a href="#dashboard" class="bn-item active" data-view="dashboard"><span>📊</span><span class="bn-cn">今日</span><span class="bn-jp">今日</span></a>
+    <a href="#vocab" class="bn-item" data-view="vocab"><span>🃏</span><span class="bn-cn">单词</span><span class="bn-jp">単語</span></a>
+    <a href="#kanji" class="bn-item" data-view="kanji"><span>🈶</span><span class="bn-cn">汉字</span><span class="bn-jp">漢字</span></a>
+    <a href="#tables" class="bn-item" data-view="tables"><span>📑</span><span class="bn-cn">词表</span><span class="bn-jp">語彙</span></a>
+    <a href="#grammar" class="bn-item" data-view="grammar"><span>📖</span><span class="bn-cn">文法</span><span class="bn-jp">文法</span></a>
+    <a href="#quiz" class="bn-item" data-view="quiz"><span>✍️</span><span class="bn-cn">测试</span><span class="bn-jp">テスト</span></a>
+    <a href="#exam" class="bn-item" data-view="exam"><span>📋</span><span class="bn-cn">考情</span><span class="bn-jp">試験</span></a>
+    <a href="#stats" class="bn-item" data-view="stats"><span>🏆</span><span class="bn-cn">成就</span><span class="bn-jp">実績</span></a>
   </nav>
 
   <main class="content" id="content">
@@ -61,7 +67,7 @@
     <section class="view" id="view-dashboard">
       <div class="hero">
         <h2>こんにちは！頑張ろう 💪</h2>
-        <p class="hero-sub">距离 N2 考试还有 <strong id="heroCountdown"></strong> 天。今天也要元气满满地学习哦！</p>
+        <p class="hero-sub">距离 2026年12月6日 N2 考试还有 <strong id="heroCountdown"></strong> 天。今天也要元气满满地学习哦！</p>
         <div class="date-line" id="todayDate"></div>
       </div>
 
@@ -101,6 +107,8 @@
         <div class="sub">共 <span id="vocabTotal"></span> 词 · 点击卡片翻面 · 自动朗读读音</div>
       </div>
 
+      <div class="vocab-cat-chips" id="vocabCats"></div>
+
       <div class="flashcard-controls">
         <button class="btn" id="vocabPrev">← 上一个</button>
         <div class="flashcard" id="flashcard">
@@ -115,7 +123,7 @@
               <div class="card-kana" id="fcKanaBack"></div>
               <div class="card-type" id="fcType"></div>
               <div class="card-meaning" id="fcMeaning"></div>
-              <div class="card-example">例: <span id="fcExample"></span></div>
+              <div class="card-example">例：<span id="fcExample"></span></div>
             </div>
           </div>
         </div>
@@ -132,18 +140,71 @@
       </div>
 
       <div class="filters">
-        <label><input type="checkbox" id="filterUnseen" > 只看未学</label>
+        <label><input type="checkbox" id="filterUnseen"> 只看未学</label>
         <label><input type="checkbox" id="filterWrong"> 只看错题</label>
       </div>
+    </section>
+
+    <!-- ============ 视图:汉字学习 ============ -->
+    <section class="view" id="view-kanji" style="display:none">
+      <div class="view-head">
+        <h2>🈶 汉字学习（N2 汉字库）</h2>
+        <div class="sub">收录日本小学 1～6 年级教育汉字 <span id="kanjiTotal"></span> 个 · 点击查看音读·训读 · 自动朗读</div>
+      </div>
+
+      <div class="unit-tabs" id="kanjiTabs"></div>
+
+      <div class="card" style="text-align:center">
+        <div class="kanji-show" id="kanjiShow">
+          <div class="kanji-big" id="kanjiChar">日</div>
+          <div class="kanji-info" id="kanjiInfo"></div>
+          <div class="kanji-actions">
+            <button class="btn btn-primary" id="kanjiSpeak">🔊 朗读</button>
+            <button class="btn btn-outline" id="kanjiPrev">← 上一个</button>
+            <button class="btn btn-outline" id="kanjiNext">下一个 →</button>
+            <button class="btn btn-amber" id="kanjiRandom">🎲 随机一个</button>
+          </div>
+          <div class="kanji-progress" id="kanjiProgress"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">🔤 汉字一览（点击选择）</h3>
+        <div class="kanji-grid" id="kanjiGrid"></div>
+      </div>
+
+      <div class="card tips-card">
+        <h3 class="card-title">💡 汉字学习建议</h3>
+        <ul class="tips">
+          <li>N2 需要的汉字约为 <strong>1000 个</strong>（相当于日本小学 5～6 年级水平）。</li>
+          <li>先学 <strong>音读</strong>（中文发音演变而来，好记），再记 <strong>训读</strong>（日语固有读法）。</li>
+          <li>结合单词卡背词，同一个汉字在不同词里的读音会越记越牢。</li>
+          <li>每天 20 个新字 + 复习，4～6 周可过完一遍。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 视图:词表资料库 ============ -->
+    <section class="view" id="view-tables" style="display:none">
+      <div class="view-head">
+        <h2>📑 词表资料库</h2>
+        <div class="sub">6000 词表（按等级/词性/搜索）· 场景分类词表 · 高频拟声拟态词 · 高频外来语 · 汉字表</div>
+      </div>
+      <div class="unit-tabs" id="tableTabs"></div>
+      <div id="tableContent"></div>
     </section>
 
     <!-- ============ 视图:文法 ============ -->
     <section class="view" id="view-grammar" style="display:none">
       <div class="view-head">
         <h2>📖 N2 文法精讲</h2>
-        <div class="sub">按单元学习，每个文法点配讲解与例句</div>
+        <div class="sub">按单元学习，覆盖 N2 全部文法考点（<span id="grammarCount"></span> 个）</div>
+      </div>
+      <div class="grammar-search">
+        <input type="text" id="grammarSearch" placeholder="🔍 搜索文法，如：わけにはいかない / に違いない / ものの…">
       </div>
       <div class="unit-tabs" id="unitTabs"></div>
+      <div class="grammar-count" id="grammarHint"></div>
       <div class="grammar-list" id="grammarList"></div>
     </section>
 
@@ -151,10 +212,15 @@
     <section class="view" id="view-listening" style="display:none">
       <div class="view-head">
         <h2>🎧 听力训练</h2>
-        <div class="sub">点击播放按钮朗读日语，选出你听到的内容</div>
+        <div class="sub">按官方题型练习 · 点击播放朗读日语 · 选出你听到的内容</div>
       </div>
+      <div class="unit-tabs" id="listenTabs"></div>
       <div class="listening-box" id="listeningBox">
+        <div class="listen-progress" id="listenProgress"></div>
         <button class="btn btn-primary btn-big" id="listenPlay">🔊 播放句子</button>
+        <div class="listen-jp" id="listenJp" style="display:none"></div>
+        <div class="listen-cn" id="listenCn"></div>
+        <div class="listen-question" id="listenQuestion"></div>
         <div class="listen-options" id="listenOptions"></div>
         <div class="listen-feedback" id="listenFeedback"></div>
         <button class="btn btn-outline" id="listenNext">下一题 →</button>
@@ -162,10 +228,11 @@
       <div class="card tips-card">
         <h3 class="card-title">💡 听力提分贴士</h3>
         <ul class="tips">
-          <li>抓住<strong>关键词</strong>和<strong>句尾</strong>（ね、よ、けど…决定语气）</li>
-          <li>N2 常考:原因·理由、时间·顺序、人物关系、地点</li>
-          <li>先读选项再听,预判会问什么</li>
-          <li>选项一般是"动作/状态/结论",注意肯定与否定</li>
+          <li><strong>課題理解</strong>：带着"接下来要做什么"去听，抓行动、时间、地点。</li>
+          <li><strong>ポイント理解</strong>：先看问题提示，带着重点去听，注意数字、日期、否定。</li>
+          <li><strong>概要理解</strong>：全文只读一遍，重点把握说话人的<strong>意图和主张</strong>，句尾（と思う、べきだ、ないといけない）是关键。</li>
+          <li><strong>即時応答</strong>：听到短句快速反应，注意请求、邀请、道歉、劝诱等场景的固定应答。</li>
+          <li><strong>統合理解</strong>：长文本信息多，注意比较・排除・整合，边听边记要点。</li>
         </ul>
       </div>
     </section>
@@ -174,15 +241,20 @@
     <section class="view" id="view-reading" style="display:none">
       <div class="view-head">
         <h2>📰 阅读理解</h2>
-        <div class="sub">每篇短文配 2-3 道理解题</div>
+        <div class="sub">覆盖短文・中文・長文・統合理解・情報検索（<span id="readingTotal"></span> 篇 · <span id="readingQTotal"></span> 题）</div>
       </div>
+      <div style="margin-bottom:14px;display:flex;gap:10px;align-items:center">
+        <button class="btn btn-outline" id="readingCnBtn">🌐 显示中文翻译</button>
+        <span style="font-size:12px;color:var(--text-light)" id="readingCnHint">点击查看文章/题目中文翻译</span>
+      </div>
+      <div class="unit-tabs" id="readingTabs"></div>
       <div class="reading-layout">
         <div class="reading-text card" id="readingText"></div>
         <div class="reading-questions card" id="readingQuestions"></div>
       </div>
       <div class="reading-controls">
         <button class="btn btn-outline" id="readingPrev">← 上一篇</button>
-        <div class="reading-progress" id="readingProgress">1 / 5</div>
+        <div class="reading-progress" id="readingProgress">1 / 14</div>
         <button class="btn btn-outline" id="readingNext">下一篇 →</button>
       </div>
     </section>
@@ -191,13 +263,14 @@
     <section class="view" id="view-quiz" style="display:none">
       <div class="view-head">
         <h2>✍️ 模拟测试</h2>
-        <div class="sub">N2 综合小测 · 计时答题 · 自动判分</div>
+        <div class="sub">全真模拟 · 专项练习 · 计时答题 · 自动判分</div>
       </div>
 
       <div id="quizHome" class="quiz-home">
         <div class="card center-card">
-          <h3>准备开始？</h3>
-          <p>共 <strong id="quizCount"></strong> 题<br>涵盖 词汇·文法·阅读<br>完成后自动判分并保存错题</p>
+          <h3>选择测试模式</h3>
+          <div class="quiz-mode-select" id="quizModes"></div>
+          <p id="quizModeDesc" style="font-size:13px;color:var(--text-light);margin-bottom:14px"></p>
           <button class="btn btn-primary btn-big" id="quizStart">🚀 开始测试</button>
         </div>
       </div>
@@ -252,13 +325,120 @@
       </div>
     </section>
 
+    <!-- ============ 视图:考试情报 ============ -->
+    <section class="view" id="view-exam" style="display:none">
+      <div class="view-head">
+        <h2>📋 N2 考试情报</h2>
+        <div class="sub">JLPT 日本語能力試験 N2 · 官方考试构成与得分标准</div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">🧠 N2 知识量（能力定位）</h3>
+        <div class="info-grid" style="margin-bottom:0">
+          <div class="info-card"><h3>🈶 汉字</h3><table><tr><td>约</td><td><b>1000 个</b>（小学5~6年级）</td></tr></table></div>
+          <div class="info-card"><h3>📚 词汇</h3><table><tr><td>约</td><td><b>6000～7000 词</b>（N5~N2累计）</td></tr></table></div>
+          <div class="info-card"><h3>📖 语法句型</h3><table><tr><td>约</td><td><b>200～500 条</b>（N2新增150~200）</td></tr></table></div>
+          <div class="info-card"><h3>🎯 能力定位</h3><table><tr><td>目标</td><td>读懂日常话题文章，理解较复杂日语，达留学/日企工作门槛</td></tr></table></div>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>⏱ 考试时间</h3>
+          <table>
+            <tr><td>考试日期</td><td>2026年12月6日（周日）</td></tr>
+            <tr><td>言语知识·读解</td><td>105 分钟</td></tr>
+            <tr><td>听力</td><td>50 分钟</td></tr>
+            <tr><td>合计</td><td>约 155 分钟</td></tr>
+          </table>
+        </div>
+        <div class="info-card">
+          <h3>🎯 得分标准</h3>
+          <table>
+            <tr><td>总分</td><td>180 分（0～180）</td></tr>
+            <tr><td>合格线</td><td><b>90 分</b></td></tr>
+            <tr><td>言语知识</td><td>0～60 分 · ≥19分</td></tr>
+            <tr><td>读解</td><td>0～60 分 · ≥19分</td></tr>
+            <tr><td>听力</td><td>0～60 分 · ≥19分</td></tr>
+          </table>
+          <p style="font-size:12px;color:var(--text-light);margin-top:8px">三项任一低于19分即不合格，总分再高也没用！</p>
+        </div>
+        <div class="info-card">
+          <h3>📚 言语知识（105分内）</h3>
+          <table>
+            <tr><td>文字・語彙</td><td>汉字读音・表记・语形成・文脉・近义・用法</td></tr>
+            <tr><td>文法</td><td>文法形式判断・句子组合・篇章语法</td></tr>
+            <tr><td>读解</td><td>短文・中文・統合理解・長文(主张)・情报检索</td></tr>
+          </table>
+        </div>
+        <div class="info-card">
+          <h3>🎧 听力（50分）</h3>
+          <table>
+            <tr><td>課題理解</td><td>解决课题所需信息</td></tr>
+            <tr><td>ポイント理解</td><td>抓住重点听</td></tr>
+            <tr><td>概要理解</td><td>把握意图·主张</td></tr>
+            <tr><td>即時応答</td><td>短句快速应答</td></tr>
+            <tr><td>統合理解</td><td>比较·综合多信息</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">💪 提分策略</h3>
+        <ul class="strategy-list">
+          <li><strong>文字词汇是保底分</strong>：每天 30～50 个单词滚动复习，读音+表记+意思一起记，考前至少过 3 遍。</li>
+          <li><strong>文法要成体系</strong>：把 194 个 N2 文法点按单元学完，重点掌握"接续+意思+例句"，做对 70% 的文法题。</li>
+          <li><strong>阅读练速度</strong>：短文 3 分钟/篇，中文 6 分钟/篇，长文 10 分钟/篇。先读问题再读文章，注意"しかし・つまり・要するに"等转折词后的内容。</li>
+          <li><strong>听力天天磨耳朵</strong>：每天 15 分钟真题听力，重点练"数字・时间・场所・否定・推测"，即时应答要多积累固定句型。</li>
+          <li><strong>真题与模拟结合</strong>：考前 6 周每周 1 套全真模拟，严格计时，模拟考场状态。</li>
+          <li><strong>错题本反复刷</strong>：错题至少重做 3 遍，直到完全掌握。</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">📌 重要提醒</h3>
+        <ul class="strategy-list">
+          <li>报名：JLPT 报名一般在考前 2～3 个月（9月左右）开放，务必关注官网 <a href="https://www.jlpt.jp" target="_blank" style="color:var(--blue)">jlpt.jp</a> 或国内考点通知。</li>
+          <li>携带：准考证、有效身份证件、铅笔（HB/2B）、橡皮。</li>
+          <li>听力录音只放一遍，边听边涂卡；考试时先易后难，不要在一道题上纠结太久。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 视图:冲刺计划 ============ -->
+    <section class="view" id="view-plan" style="display:none">
+      <div class="view-head">
+        <h2>🗓 16 周 N2 冲刺计划</h2>
+        <div class="sub">从 8月17日 到 12月6日 考试，分四个阶段稳步推进</div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">📈 每周时间分配（建议）</h3>
+        <table class="plan-week-table">
+          <tr><th>项目</th><th>周一~周五</th><th>周末</th></tr>
+          <tr><td>单词</td><td>每天 30 个新词 + 复习旧词（30分钟）</td><td>复习本周全部单词（60分钟）</td></tr>
+          <tr><td>文法</td><td>每天 3～5 个文法点（30分钟）</td><td>单元总复习 + 练习（60分钟）</td></tr>
+          <tr><td>听力</td><td>每天 15 分钟真题/训练</td><td>听力专项 40 分钟</td></tr>
+          <tr><td>阅读</td><td>隔天 1 篇短文/中文</td><td>中文/长文 2 篇</td></tr>
+          <tr><td>模拟</td><td>—</td><td>周末 1 套全真模拟（第7周起）</td></tr>
+        </table>
+      </div>
+
+      <div class="plan-timeline" id="planTimeline"></div>
+    </section>
+
   </main>
 
   <!-- 提示浮层 -->
   <div id="toast" class="toast"></div>
 
-  <script src="js/vocab.js"></script>
-  <script src="js/data.js"></script>
+  <script src="js/data/vocab.js"></script>
+  <script src="js/data/kanji.js"></script>
+  <script src="js/data/wordtables.js"></script>
+  <script src="js/data/grammar.js"></script>
+  <script src="js/data/reading.js"></script>
+  <script src="js/data/listening.js"></script>
+  <script src="js/data/quiz.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
